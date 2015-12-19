@@ -72,9 +72,7 @@ function powerline_scm_prompt {
         else
             SCM_PROMPT="$(set_rgb_color ${SCM_THEME_PROMPT_CLEAN_COLOR} ${SCM_THEME_PROMPT_COLOR})"
         fi
-        if [[ "${SCM_GIT_CHAR}" == "${SCM_CHAR}" ]]; then
-            SCM_PROMPT+=" ${SCM_CHAR}${SCM_BRANCH}${SCM_STATE} "
-        fi
+        SCM_PROMPT+=" ${SCM_CHAR}${SCM_BRANCH}${SCM_STATE} "
         SCM_PROMPT="${SCM_PROMPT}${normal}"
     else
         SCM_PROMPT=""

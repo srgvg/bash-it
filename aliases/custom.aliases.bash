@@ -10,6 +10,7 @@ alias aud='sudo aptitude update'
 alias aug='sudo aptitude full-upgrade'
 alias auu='aud ; aug'
 alias bi="bash-it"
+alias chromi="chromium-browser --incognito"
 alias copy='xclip -in -selection c'
 alias deploy="acdplay -t deploy"
 alias diff='diff -u'

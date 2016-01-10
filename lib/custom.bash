@@ -92,3 +92,14 @@ then
         --inherit any --agents ssh,gpg \
         --eval ~/.ssh/id_rsa ~/.ssh/id_rsa2`
 fi
+
+# i3 jobs running in screen
+launch-i3job() {
+    echo -n "Checking for \"$*\" ... "
+    if pgrep -f "$*"
+    then
+        echo Already running.
+    else
+        launch-screen i3jobs add $*
+    fi
+}

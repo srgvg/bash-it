@@ -43,6 +43,8 @@ fi
 PATH="/usr/local/go/bin:$HOME/src/go/bin:$PATH"
 # local pip and other thingz
 PATH="$HOME/.local/bin:$PATH"
+# ruby local path
+PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
 
 # custom bash completions
 if [ -d ~/.bash_completion.d ]

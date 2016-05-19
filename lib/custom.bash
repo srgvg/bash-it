@@ -105,3 +105,23 @@ launch-i3job() {
         launch-screen i3jobs add $*
     fi
 }
+
+# switch ansible versions 1-2
+aswitch() {
+    pushd ~/ansible
+    currentrev=$(git describe --tags)
+    if [[ $currentrev =~ .*v1.* ]]
+    then
+        git co v2.0.1.0-1
+        git submodule update
+        rm -rf v2/
+        rm $(git ls-files --others)
+    elif [[ $currentrev =~ .*v2.* ]]
+    then
+        git co v1.9.2-1
+        git submodule update
+        rm $(git ls-files --others)
+    fi
+    source hacking/env-setup >/dev/null 2>&1
+    popd
+}

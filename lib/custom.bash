@@ -9,6 +9,9 @@ shopt -s histappend
 HISTSIZE=5000
 HISTFILESIZE=20000
 
+# https://spin.atomicobject.com/2016/05/28/log-bash-history/
+export PROMPT_COMMAND='echo "$(date "+%Y-%m-%d.%H:%M:%S") ${BASHPID}/$(history 1) [$(pwd)]" >> ~/logs/bash_history/$(date "+%Y%m%d").log '";${PROMPT_COMMAND}"
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -44,7 +47,7 @@ PATH="/usr/local/go/bin:$HOME/src/go/bin:$PATH"
 # local pip and other thingz
 PATH="$HOME/.local/bin:$PATH"
 # ruby local path
-PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
+PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 
 # custom bash completions
 if [ -d ~/.bash_completion.d ]
@@ -92,7 +95,7 @@ then
     [ -x `which keychain` ]  && \
         eval `keychain --lockwait 300 --quiet \
         --inherit any --agents ssh,gpg \
-        --eval ~/.ssh/id_rsa ~/.ssh/id_rsa2`
+        --eval ~/.ssh/id_rsa`
 fi
 
 # i3 jobs running in screen
@@ -112,13 +115,13 @@ aswitch() {
     currentrev=$(git describe --tags)
     if [[ $currentrev =~ .*v1.* ]]
     then
-        git co v2.0.1.0-1
+        git co v2.1.0.0-1
         git submodule update
         rm -rf v2/
         rm $(git ls-files --others)
     elif [[ $currentrev =~ .*v2.* ]]
     then
-        git co v1.9.2-1
+        git co v1.9.6-1
         git submodule update
         rm $(git ls-files --others)
     fi

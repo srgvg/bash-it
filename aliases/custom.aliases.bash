@@ -1,6 +1,3 @@
-alias acdplay2="cd ~/acd; bin/acdplay2"
-alias acdplaybook="cd ~/acd; ansible-playbook -i ~/src/acd/ansible-data/inventory ~/src/acd/ansible-data/main.yml $*"
-alias acdplay="cd ~/acd; bin/acdplay"
 alias ahack='source ~/ansible/hacking/env-setup >/dev/null 2>&1'
 alias ai='sudo aptitude install'
 alias ansible-hostvars='ansible -m debug -a var=hostvars[inventory_hostname]'
@@ -12,7 +9,6 @@ alias auu='aud ; aug'
 alias bi="bash-it"
 alias chromi="chromium-browser --incognito"
 alias copy='xclip -in -selection c'
-alias deploy="acdplay -t deploy"
 alias diff='diff -u'
 alias dL='dpkg -L'
 alias ecryptmount="sudo mount -t ecryptfs -o ecryptfs_enable_filename_crypto=yes"

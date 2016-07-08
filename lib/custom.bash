@@ -9,9 +9,6 @@ shopt -s histappend
 HISTSIZE=5000
 HISTFILESIZE=20000
 
-# https://spin.atomicobject.com/2016/05/28/log-bash-history/
-export PROMPT_COMMAND='echo "$(date "+%Y-%m-%d.%H:%M:%S") ${BASHPID}/$(history 1) [$(pwd)]" >> ~/logs/bash_history/$(date "+%Y%m%d").log '";${PROMPT_COMMAND}"
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -128,3 +125,4 @@ aswitch() {
     source hacking/env-setup >/dev/null 2>&1
     popd
 }
+

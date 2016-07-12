@@ -67,10 +67,10 @@ dl() {
     dpkg -l | grep `for n in ${*:-^}; do echo -n " -e $n"; done`
     }
 
-# make a dir and change to it
-mkcd () {
-	mkdir -v $1 && cd $1
-	}
+## make a dir and change to it
+#mkcd () {
+#	mkdir -v $1 && cd $1
+#	}
 
 # quick character count
 wcc() { echo "$*" | wc -c; }

@@ -39,6 +39,13 @@ if [ -d "$HOME/bin2" ] ; then
     fi
 fi
 
+export GOPATH=~/src/go/
+export VISUAL=vim
+export EDITOR=vim
+
+export DEBFULLNAME="Serge van Ginderachter"
+export DEBEMAIL="serge@vanginderachter.be"
+
 # golang bin path
 PATH="/usr/local/go/bin:$HOME/src/go/bin:$PATH"
 # local pip and other thingz

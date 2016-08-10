@@ -44,6 +44,5 @@ alias svn-addall='svn add `svn status | grep ? | cut -d\  -f2- | xargs`'
 alias swappy="/sbin/sysctl vm.swappiness"
 alias sysl="less /var/log/syslog"
 alias terminal="/usr/bin/xfce4-terminal --disable-server"
-alias upansible='cd ~/ansible && upansible'
 alias vs="vcsh status"
 alias v="vcsh"

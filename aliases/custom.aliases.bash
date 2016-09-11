@@ -38,6 +38,7 @@ alias poweroff="sudo poweroff"
 alias poweroff='sudo /sbin/poweroff'
 alias r='ranger'
 alias shredit='shred --verbose --iterations 5 --zero --remove'
+alias sjah="echo -n '¯\_(ツ)_/¯' | xclip -in -selection clipboard && paste"
 alias sshnc="ssh -S none"
 alias sshnokey="ssh -o PubkeyAuthentication=no"
 alias sshpw="ssh -o ControlPath=none -o PreferredAuthentications=password"

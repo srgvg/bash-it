@@ -99,7 +99,7 @@ then
     [ -x `which keychain` ]  && \
         eval `keychain --lockwait 300 --quiet \
         --inherit any --agents ssh,gpg \
-        --eval ~/.ssh/id_rsa`
+        --eval ~/.ssh/id_rsa ~/.ssh/id_ed25519`
 fi
 
 # i3 jobs running in screen

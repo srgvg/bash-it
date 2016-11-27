@@ -1,13 +1,12 @@
 alias ahack='source ~/ansible/hacking/env-setup >/dev/null 2>&1'
-alias ai='sudo aptitude install'
+alias ai='sudo apt install'
 alias ansible-hostvars='ansible -m debug -a var=hostvars[inventory_hostname]'
 alias as='apt-cache search'
 alias ash='apt-cache show'
-alias aud='sudo aptitude update'
-alias aug='sudo aptitude full-upgrade'
-alias auu='aud ; aug'
+alias aud='sudo apt update && apt-list --upgradable'
+alias aug='sudo apt upgrade'
+alias auf='sudo apt full-upgrade'
 alias bi="bash-it"
-alias chromi="chromium-browser --incognito"
 alias copy='xclip -in -selection c'
 alias diff='diff -u'
 alias dL='dpkg -L'

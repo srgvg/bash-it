@@ -21,7 +21,9 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-
+#
+## PATH #
+#
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -39,19 +41,22 @@ if [ -d "$HOME/bin2" ] ; then
     fi
 fi
 
+# golang bin path
+PATH="/usr/local/go/bin:$HOME/src/go/bin:$PATH"
+# local pip and other thingz
+PATH="$HOME/.local/bin:$PATH"
+# ruby local path
+#PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"
+
+# sbin (Debian)
+PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
+
 export GOPATH=~/src/go/
 export VISUAL=vim
 export EDITOR=vim
 
 export DEBFULLNAME="Serge van Ginderachter"
 export DEBEMAIL="serge@vanginderachter.be"
-
-# golang bin path
-PATH="/usr/local/go/bin:$HOME/src/go/bin:$PATH"
-# local pip and other thingz
-PATH="$HOME/.local/bin:$PATH"
-# ruby local path
-PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 
 # custom bash completions
 if [ -d ~/.bash_completion.d ]
@@ -94,12 +99,14 @@ up() {
 ## SSH Agent
 #export SSH_ASKPASS=`which ssh-askpass`
 if [   X$HOSTNAME = Xgoldorak \
+    -o X$HOSTNAME = Xminos \
     -o X$HOSTNAME = Xcyberlab ]
 then
     [ -x `which keychain` ]  && \
+    [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || \
         eval `keychain --lockwait 300 --quiet \
         --inherit any --agents ssh,gpg \
-        --eval ~/.ssh/id_rsa ~/.ssh/id_ed25519`
+        --eval ~/.ssh/id_rsa ` #~/.ssh/id_ed25519`
 fi
 
 # i3 jobs running in screen

@@ -16,8 +16,6 @@ SCM_THEME_BRANCH_GONE_PREFIX=' ⇢ '
 SCM_THEME_CURRENT_USER_PREFFIX=' ☺︎ '
 SCM_THEME_CURRENT_USER_SUFFIX=''
 
-CLOCK_CHAR='☆'
-THEME_CLOCK_CHECK=${THEME_CLOCK_CHECK:=true}
 THEME_BATTERY_PERCENTAGE_CHECK=${THEME_BATTERY_PERCENTAGE_CHECK:=true}
 
 SCM_GIT_SHOW_DETAILS=${SCM_GIT_SHOW_DETAILS:=true}
@@ -86,13 +84,13 @@ function scm_prompt_vars {
 }
 
 function scm_prompt_info {
-  scm_prompt_vars
-  if [ $SCM == $SCM_HG ]; then
-    echo -e "$SCM_PREFIX$SCM_BRANCH:${SCM_CHANGE#*:}$SCM_STATE$SCM_SUFFIX"
-  else
-    echo -e "$SCM_PREFIX$SCM_BRANCH$SCM_STATE$SCM_SUFFIX"
-  fi
-  return
+  scm
+  scm_prompt_char
+  SCM_DIRTY=0
+  SCM_STATE=''
+  [[ $SCM == $SCM_GIT ]] && git_prompt_info && return
+  [[ $SCM == $SCM_HG ]] && hg_prompt_info && return
+  [[ $SCM == $SCM_SVN ]] && svn_prompt_info && return
 }
 
 function git_status_summary {
@@ -345,6 +343,28 @@ function git_user_info {
   [[ -n "${SCM_CURRENT_USER}" ]] && printf "%s" "$SCM_THEME_CURRENT_USER_PREFFIX$SCM_CURRENT_USER$SCM_THEME_CURRENT_USER_SUFFIX"
 }
 
+function clock_char {
+  CLOCK_CHAR=${THEME_CLOCK_CHAR:-"⌚"}
+  CLOCK_CHAR_COLOR=${THEME_CLOCK_CHAR_COLOR:-"$normal"}
+  SHOW_CLOCK_CHAR=${THEME_SHOW_CLOCK_CHAR:-"true"}
+
+  if [[ "${SHOW_CLOCK_CHAR}" = "true" ]]; then
+    echo -e "${CLOCK_CHAR_COLOR}${CLOCK_CHAR}"
+  fi
+}
+
+function clock_prompt {
+  CLOCK_COLOR=${THEME_CLOCK_COLOR:-"$normal"}
+  CLOCK_FORMAT=${THEME_CLOCK_FORMAT:-"%H:%M:%S"}
+  [ -z $THEME_SHOW_CLOCK ] && THEME_SHOW_CLOCK=${THEME_CLOCK_CHECK:-"true"}
+  SHOW_CLOCK=$THEME_SHOW_CLOCK
+
+  if [[ "${SHOW_CLOCK}" = "true" ]]; then
+    CLOCK_STRING=$(date +"${CLOCK_FORMAT}")
+    echo -e "${CLOCK_COLOR}${CLOCK_STRING}"
+  fi
+}
+
 # backwards-compatibility
 function git_prompt_info {
   git_prompt_vars
@@ -368,13 +388,6 @@ function scm_char {
 
 function prompt_char {
     scm_char
-}
-
-function clock_char {
-    if [[ "${THEME_CLOCK_CHECK}" = true ]]; then
-        DATE_STRING=$(date +"%Y-%m-%d %H:%M:%S")
-        echo -e "${bold_cyan}$DATE_STRING ${red}$CLOCK_CHAR"
-    fi
 }
 
 function battery_char {

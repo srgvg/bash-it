@@ -105,7 +105,8 @@ then
     [ -x `which keychain` ]  && \
     [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || \
         eval `keychain --lockwait 300 --quiet \
-        --inherit any --agents ssh,gpg \
+        --inherit any --nogui \
+        --agents ssh,gpg \
         --eval ~/.ssh/id_rsa ` #~/.ssh/id_ed25519`
 fi
 

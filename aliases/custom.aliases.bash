@@ -3,7 +3,11 @@ alias ai='sudo apt install'
 alias ansible-hostvars='ansible -m debug -a var=hostvars[inventory_hostname]'
 alias as='apt-cache search'
 alias ash='apt-cache show'
-alias aud='sudo apt update && apt-list --upgradable'
+alias ap='apt-cache policy'
+apk() {
+  apt-cache policy $*; apt-cache showpkg $*
+}
+alias aud='sudo apt update && apt list --upgradable -a'
 alias aug='sudo apt upgrade'
 alias auf='sudo apt full-upgrade'
 alias bi="bash-it"

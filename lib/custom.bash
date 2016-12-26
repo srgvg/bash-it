@@ -102,12 +102,14 @@ if [   X$HOSTNAME = Xgoldorak \
     -o X$HOSTNAME = Xminos \
     -o X$HOSTNAME = Xcyberlab ]
 then
+    shopt -s extglob
     [ -x `which keychain` ]  && \
     [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || \
         eval `keychain --lockwait 300 --quiet \
         --inherit any --nogui \
         --agents ssh,gpg \
-        --eval ~/.ssh/id_rsa ` #~/.ssh/id_ed25519`
+        --eval ~/.ssh/keys/default/!(*.pub)`
+    shopt -u extglob
 fi
 
 # i3 jobs running in screen

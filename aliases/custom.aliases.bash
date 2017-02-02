@@ -31,6 +31,7 @@ alias gt='git show-tree'
 alias gu='git up'
 alias imginfo="identify -format '-- %f -- \nType: %m\nSize: %b bytes\nResolution: %wpx x %hpx\nColors: %k'"
 alias imgres="identify -format '%f: %wpx x %hpx\n'"
+alias k="kubectl"
 alias li3='launch-screen i3jobs'
 alias l='ls -lh'
 alias o='gnome-open'

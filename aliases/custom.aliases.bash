@@ -8,8 +8,8 @@ apk() {
   apt-cache policy $*; apt-cache showpkg $*
 }
 alias aud='sudo apt update && apt list --upgradable -a'
-alias aug='sudo apt upgrade'
-alias auf='sudo apt full-upgrade'
+alias aug='sudo apt -y upgrade'
+alias auf='sudo apt -y full-upgrade && sudo apt -y autoremove'
 alias bi="bash-it"
 alias copy='xclip -in -selection c'
 alias diff='diff -u'

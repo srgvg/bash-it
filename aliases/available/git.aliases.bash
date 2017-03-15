@@ -4,6 +4,7 @@ about-alias 'common git abbreviations'
 # Aliases
 alias gcl='git clone'
 alias ga='git add'
+alias grm='git rm'
 alias gap='git add -p'
 alias gall='git add -A'
 alias gf='git fetch --all --prune'
@@ -40,6 +41,7 @@ alias gci='git commit --interactive'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gbt='git branch --track'
+alias gmv='git branch -m'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gco='git checkout'
@@ -65,6 +67,10 @@ alias gnew="git log HEAD@{1}..HEAD@{0}"
 # Add uncommitted and unstaged changes to the last commit
 alias gcaa="git commit -a --amend -C HEAD"
 alias ggui="git gui"
+alias gcam="git commit -am"
+alias gcsam="git commit -S -am"
+alias gstd="git stash drop"
+alias gstl="git stash list"
 
 case $OSTYPE in
   darwin*)

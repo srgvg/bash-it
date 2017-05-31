@@ -15,6 +15,7 @@ alias gus='git reset HEAD'
 alias gpristine='git reset --hard && git clean -dfx'
 alias gclean='git clean -fd'
 alias gm="git merge"
+alias gmv='git mv'
 alias g='git'
 alias get='git'
 alias gst='git status'
@@ -33,6 +34,7 @@ alias gpom='git push origin master'
 alias gr='git remote'
 alias grv='git remote -v'
 alias gra='git remote add'
+alias gd='git diff'
 alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
@@ -41,7 +43,7 @@ alias gci='git commit --interactive'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gbt='git branch --track'
-alias gmv='git branch -m'
+alias gbm='git branch -m'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gco='git checkout'
@@ -56,7 +58,7 @@ alias gll='git log --graph --pretty=oneline --abbrev-commit'
 alias gg="git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative"
 alias ggs="gg --stat"
 alias gsl="git shortlog -sn"
-alias gw="git whatchanged"
+alias gwc="git whatchanged"
 alias gt="git tag"
 alias gta="git tag -a"
 alias gtd="git tag -d"
@@ -80,19 +82,3 @@ case $OSTYPE in
     alias gtls='git tag -l | sort -V'
     ;;
 esac
-
-if [ -z "$EDITOR" ]; then
-    case $OSTYPE in
-      linux*)
-        alias gd='git diff | vim -R -'
-        ;;
-      darwin*)
-        alias gd='git diff | mate'
-        ;;
-      *)
-        alias gd='git diff'
-        ;;
-    esac
-else
-    alias gd="git diff | $EDITOR"
-fi

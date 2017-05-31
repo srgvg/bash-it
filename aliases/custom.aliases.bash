@@ -40,6 +40,7 @@ alias ping1="ping -c 1 "
 alias ping3="ping -c 3 "
 alias poweroff="sudo poweroff"
 alias poweroff='sudo /sbin/poweroff'
+alias psless="ps auxwwf | less"
 alias r='ranger'
 alias shredit='shred --verbose --iterations 5 --zero --remove'
 alias sjah="echo -n '¯\_(ツ)_/¯' | xclip -in -selection clipboard && paste"

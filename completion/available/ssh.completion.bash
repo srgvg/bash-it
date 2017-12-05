@@ -14,9 +14,9 @@ _sshcomplete() {
 
     # parse all defined hosts from .ssh/config
     if [ -r "$HOME/.ssh/config" ]; then
-        COMPREPLY=($(compgen -W "$(grep ^Host "$HOME/.ssh/config" | awk '{for (i=2; i<=NF; i++) print $i}' )" ${OPTIONS}) )
+        COMPREPLY=($(compgen -W "$(grep -i ^Host "$HOME/.ssh/config" | awk '{for (i=2; i<=NF; i++) print $i}' )" ${OPTIONS}) )
       if [ -r "$HOME/.ssh/config.d/" ]; then
-          COMPREPLY=( ${COMPREPLY[@]} $(compgen -W "$(grep -R ^Host "$HOME/.ssh/config.d/" | awk '{for (i=2; i<=NF; i++) print $i}' )" ${OPTIONS}) )
+          COMPREPLY=( ${COMPREPLY[@]} $(compgen -W "$(grep -Ri ^Host "$HOME/.ssh/config.d/" | awk '{for (i=2; i<=NF; i++) print $i}' )" ${OPTIONS}) )
       fi
     fi
 

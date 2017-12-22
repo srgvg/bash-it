@@ -18,6 +18,3 @@ if [[ $BASH_IT_THEME ]]; then
     fi
 fi
 
-# https://spin.atomicobject.com/2016/05/28/log-bash-history/
-[ -d ~/logs/bash_history ] && \
-  export PROMPT_COMMAND='echo "$(date "+%Y-%m-%d.%H:%M:%S") ${BASHPID}/$(history 1) [$(pwd)]" >> ~/logs/bash_history/$(date "+%Y")/$(date "+%m")/$(date "+%Y%m%d")-$(hostname).log '";${PROMPT_COMMAND}"

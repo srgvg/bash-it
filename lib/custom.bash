@@ -28,9 +28,9 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-# set PATH so it includes user's private sbin if it exists
-if [ -d "$HOME/sbin" ] ; then
-    PATH="$HOME/sbin:$PATH"
+# set PATH so it includes user's private bins (bin secure) if it exists
+if [ -d "$HOME/bins" ] ; then
+    PATH="$HOME/bins:$PATH"
 fi
 # set PATH so it includes user's extra bin2 if it exists
 if [ -d "$HOME/bin2" ] ; then

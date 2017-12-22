@@ -1,0 +1,1 @@
+../plugins/available/bash_history.plugin.bash

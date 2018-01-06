@@ -102,6 +102,11 @@ if [   X$HOSTNAME = Xgoldorak \
     -o X$HOSTNAME = Xminos \
     -o X$HOSTNAME = Xcyberlab ]
 then
+    # re-use keychain agents if available
+    if [ -f ~/.keychain/${HOSTNAME}-sh ]; then
+    	source ~/.keychain/${HOSTNAME}-sh
+    fi
+
     shopt -s extglob
     [ -x `which keychain` ]  && \
     [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || \

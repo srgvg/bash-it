@@ -7,13 +7,17 @@ then
   mkdir -p $HOME/logs/bash_history/$(date "+%Y")/$(date "+%m")/
 fi
 
-function preexec_bash_history_install () {
+function preexec_serge_install () {
+
     function precmd () {
+
       echo "$(date "+%Y-%m-%d.%H:%M:%S") ${BASHPID}/$(history 1) [$(pwd)]" \
       >> $HOME/logs/bash_history/$(date "+%Y")/$(date "+%m")/$(date "+%Y%m%d")-$(hostname).log
+
     }
 
     preexec_install
 }
 
-preexec_bash_history_install
+preexec_serge_install
+

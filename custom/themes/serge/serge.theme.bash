@@ -3,7 +3,7 @@
 basetheme=powerline-multiline
 source "$BASH_IT/themes/$basetheme/$basetheme.theme.bash"
 
-POWERLINE_LEFT_PROMPT="user_info hostname scm cwd"
+POWERLINE_LEFT_PROMPT="newline user_info hostname scm cwd"
 POWERLINE_RIGHT_PROMPT="ansible python_venv clock"
 
 POWERLINE_LEFT_SEPARATOR=""
@@ -39,12 +39,16 @@ function rename_function() {
     eval "$NEWNAME_FUNC"
 }
 
-function __powerline_ansible_prompt {
+function __powerline_ansible_prompt() {
   if [[ "$PATH" =~ "ansible" ]]; then
         local ANSIBLE=$(ansible --version | head -n1 | \
           sed -e 's/ansible //' -e's/ last updated.*//')
         echo "${POWERLINE_ANSIBLE_CHAR}${ANSIBLE}|${ANSIBLE_THEME_PROMPT_COLOR}"
   fi
+}
+
+function __powerline_newline_prompt() {
+  echo -e '\\n'
 }
 
 rename_function __powerline_prompt_command ___powerline_prompt_command

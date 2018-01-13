@@ -21,6 +21,27 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+## SSH Agent
+#export SSH_ASKPASS=`which ssh-askpass`
+if [   X$HOSTNAME = Xgoldorak \
+    -o X$HOSTNAME = Xminos \
+    -o X$HOSTNAME = Xcyberlab ]
+then
+    # re-use keychain agents if available
+    if [ -f ~/.keychain/${HOSTNAME}-sh ]; then
+    	source ~/.keychain/${HOSTNAME}-sh
+    fi
+
+    shopt -s extglob
+    [ -x `which keychain` ]  && \
+    [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || \
+        eval `keychain --lockwait 300 --quiet \
+        --inherit any --nogui \
+        --agents ssh,gpg \
+        --eval ~/.ssh/keys/default/!(*.pub)`
+    shopt -u extglob
+fi
+
 #
 ## PATH #
 #
@@ -68,26 +89,26 @@ then
 fi
 
 # quick package search
-dl() {
+function dl() {
     dpkg -l | grep `for n in ${*:-^}; do echo -n " -e $n"; done`
     }
 
-## make a dir and change to it
-#mkcd () {
+## make a dir and change to it - default in bash-it
+#function mkcd () {
 #	mkdir -v $1 && cd $1
 #	}
 
 # quick character count
-wcc() { echo "$*" | wc -c; }
+function wcc() { echo "$*" | wc -c; }
 
 # This will take you to the relevant part of the man page,
 # so you can see the description of the switch underneath.
-manswitch () {
+function manswitch () {
 	man $1 | less -p "^ +$2";
 	}
 
 # Quickly CD Out Of n Directories
-up() {
+function up() {
 	local x=''
 	for i in $(seq ${1:-1})
 	do 	x="$x../"
@@ -96,40 +117,9 @@ up() {
 	}
 
 
-## SSH Agent
-#export SSH_ASKPASS=`which ssh-askpass`
-if [   X$HOSTNAME = Xgoldorak \
-    -o X$HOSTNAME = Xminos \
-    -o X$HOSTNAME = Xcyberlab ]
-then
-    # re-use keychain agents if available
-    if [ -f ~/.keychain/${HOSTNAME}-sh ]; then
-    	source ~/.keychain/${HOSTNAME}-sh
-    fi
-
-    shopt -s extglob
-    [ -x `which keychain` ]  && \
-    [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || \
-        eval `keychain --lockwait 300 --quiet \
-        --inherit any --nogui \
-        --agents ssh,gpg \
-        --eval ~/.ssh/keys/default/!(*.pub)`
-    shopt -u extglob
-fi
-
-# i3 jobs running in screen
-launch-i3job() {
-    echo -n "Checking for \"$*\" ... "
-    if pgrep -f "$*"
-    then
-        echo Already running.
-    else
-        launch-screen i3jobs add $*
-    fi
-}
 
 # switch ansible versions 1-2
-aswitch() {
+function aswitch() {
     pushd ~/ansible
     currentrev=$(git describe --tags)
     if [[ $currentrev =~ .*v1.* ]]
@@ -147,3 +137,6 @@ aswitch() {
     source hacking/env-setup >/dev/null 2>&1
     popd
 }
+
+source $HOME/etc/defaults
+

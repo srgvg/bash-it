@@ -138,5 +138,8 @@ function aswitch() {
     popd
 }
 
+# Avoid "Double quote to prevent globbing and word splitting."
+export SHELLCHECK_OPTS='--shell=bash --exclude=SC2086'
+
 source $HOME/etc/defaults
 

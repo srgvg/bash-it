@@ -138,6 +138,10 @@ function aswitch() {
     popd
 }
 
+function bitly() {
+	$HOME/bins/bitly "${1:-}" | tr -d '\n' | tee >(xclip -in -selection clipboard)
+}
+
 # Avoid "Double quote to prevent globbing and word splitting."
 export SHELLCHECK_OPTS='--shell=bash --exclude=SC2086'
 

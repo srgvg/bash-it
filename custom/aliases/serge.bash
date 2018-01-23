@@ -4,9 +4,6 @@ alias ansible-hostvars='ansible -m debug -a var=hostvars[inventory_hostname]'
 alias as='apt-cache search'
 alias ash='apt-cache show'
 alias ap='apt-cache policy'
-apk() {
-  apt-cache policy $*; apt-cache showpkg $*
-}
 alias aud='sudo apt update && apt list --upgradable -a'
 alias aug='sudo apt -y upgrade'
 alias auf='sudo apt -y full-upgrade && sudo apt -y autoremove'

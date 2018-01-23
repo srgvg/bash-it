@@ -1,21 +1,26 @@
 
 ## SSH Agent
-if [   X$HOSTNAME = Xgoldorak \
-    -o X$HOSTNAME = Xminos \
-    -o X$HOSTNAME = Xcyberlab ]
+if [   "${HOSTNAME}" = "goldorak" ] || [ "${HOSTNAME}" = "minos" ] || [ "${HOSTNAME}" = "cyberlab" ]
 then
     # re-use keychain agents if available
-    if [ -f ~/.keychain/${HOSTNAME}-sh ]; then
+    if [ -f ~/.keychain/${HOSTNAME}-sh ]
+    then
+      # shellcheck disable=SC1090
     	source ~/.keychain/${HOSTNAME}-sh
     fi
 
-    shopt -s extglob
-    [ -x `which keychain` ]  && \
-    [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || \
-        eval `keychain --lockwait 300 --quiet \
-        --inherit any --nogui \
-        --agents ssh,gpg \
-        --eval ~/.ssh/keys/default/!(*.pub)`
-    shopt -u extglob
+    # check if extglob is already set (this script gets SOURCED and bash_it does stuff
+    if [[ $(shopt extglob) =~ on ]]
+    then
+      EXTGLOB=1
+    else
+      EXTGLOB=0
+      shopt -s extglob
+    fi
+    [ -x "$(which keychain)" ] && [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || eval "$(keychain --lockwait 300 --quiet --inherit any --nogui --agents ssh,gpg --eval ~/.ssh/keys/default/!(*.pub))"
+    if [ "${EXTGLOB}" -eq 0 ]
+    then
+      shopt -u extglob
+    fi
 fi
 

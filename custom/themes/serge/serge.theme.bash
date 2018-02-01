@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 basetheme=powerline-multiline
+#POWERLINE_PROMPT_CHAR="\r"
 source "$BASH_IT/themes/$basetheme/$basetheme.theme.bash"
 
 POWERLINE_LEFT_PROMPT="newline user_info hostname scm cwd"
 POWERLINE_RIGHT_PROMPT="ansible python_venv clock"
-
 POWERLINE_LEFT_SEPARATOR=""
 POWERLINE_RIGHT_SEPARATOR=""
 POWERLINE_LEFT_END=""
 POWERLINE_RIGHT_END=""
 POWERLINE_ANSIBLE_CHAR="Ⓐ "
-POWERLINE_USER_INFO_SSH_CHAR="(ssh)"
+POWERLINE_USER_INFO_SSH_CHAR="[SSH]"
 
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting#background1
 ANSIBLE_THEME_PROMPT_COLOR=88

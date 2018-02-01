@@ -51,3 +51,5 @@ alias sysl="less /var/log/syslog"
 alias terminal="/usr/bin/xfce4-terminal --disable-server"
 alias vs="vcsh status"
 alias v="vcsh"
+
+unalias grv

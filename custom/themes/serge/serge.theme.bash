@@ -5,7 +5,7 @@ basetheme=powerline-multiline
 source "$BASH_IT/themes/$basetheme/$basetheme.theme.bash"
 
 POWERLINE_LEFT_PROMPT="newline user_info hostname scm cwd"
-POWERLINE_RIGHT_PROMPT="ansible python_venv clock"
+POWERLINE_RIGHT_PROMPT="ansible python_venv" # clock"
 POWERLINE_LEFT_SEPARATOR=""
 POWERLINE_RIGHT_SEPARATOR=""
 POWERLINE_LEFT_END=""

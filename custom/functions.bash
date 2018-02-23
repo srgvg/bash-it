@@ -101,17 +101,6 @@ function i3-reconnect-i3jobs() {
     screen -D -r i3jobs
 }
 
-# pyenv
-function pyenv-init() {
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    if command -v pyenv 1>/dev/null 2>&1
-    then
-        eval "$(pyenv init -)"
-    fi
-    eval "$(pyenv virtualenv-init -)"
-}
-
 #
 function up() {
   # Quickly CD Out Of n Directories

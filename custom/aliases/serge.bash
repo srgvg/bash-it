@@ -46,7 +46,7 @@ alias sshnokey="ssh -o PubkeyAuthentication=no"
 alias sshpw="ssh -o ControlPath=none -o PreferredAuthentications=password"
 alias svn-addall='svn add `svn status | grep ? | cut -d\  -f2- | xargs`'
 alias swappy="/sbin/sysctl vm.swappiness"
-alias sysl="less /var/log/syslog"
+alias sysl="tail -f /var/log/syslog"
 alias terminal="/usr/bin/xfce4-terminal --disable-server"
 alias vs="vcsh status"
 alias v="vcsh"

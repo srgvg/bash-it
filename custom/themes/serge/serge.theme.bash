@@ -48,7 +48,7 @@ function __powerline_ansible_prompt() {
 }
 
 function __powerline_newline_prompt() {
-  echo -e '\\n'
+  echo -e "${reset_color}${normal}"'\\n'
 }
 
 rename_function __powerline_prompt_command ___powerline_prompt_command

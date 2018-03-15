@@ -36,12 +36,6 @@ function aswitch() {
 	popd
 }
 
-function bitlys() {
-	convert an url to my bitly shorturl
-	# shellcheck disable=SC2046
-	$HOME/bin/bitly "${1:-}" | tr -d '\n' | tee >(xclip -in -selection clipboard)
-}
-
 function dl() {
 	# quick package search
 	# shellcheck disable=SC2046
@@ -52,27 +46,6 @@ function manswitch() {
   # This will take you to the relevant part of the man page,
   # so you can see the description of the switch underneath.
   man $1 | less -p "^ +$2";
-}
-
-function i3-launch-job() {
-	if [ -z "$*" ]
-	then
-		echo "Nothing to launch"
-		return
-	fi
-	echo; echo -n "Checking for \"$*\" ... "
-	if pgrep -f "$*"
-	then
-		echo Already running.
-	else
-		# shellcheck disable=SC2048
-		launch-screen i3jobs add $*
-	fi
-	echo; echo "----------------------------------------"
-}
-
-function i3-reconnect-i3jobs() {
-	screen -D -r i3jobs
 }
 
 function up() {

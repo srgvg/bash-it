@@ -8,8 +8,6 @@ function apk() {
 	# shellcheck disable=SC2048
 	apt-cache policy $*
 	# shellcheck disable=SC2048
-	apt-cache policy $*
-	# shellcheck disable=SC2048
 	apt-cache showpkg $*
 }
 

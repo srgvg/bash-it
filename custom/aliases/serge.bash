@@ -5,6 +5,7 @@ alias as='apt-cache search'
 alias ash='apt-cache show'
 alias ap='apt-cache policy'
 alias aud='sudo apt update && apt list --upgradable -a'
+alias audf='sudo apt update && apt list --upgradable -a && sudo apt -y full-upgrade && sudo apt -y autoremove'
 alias aug='sudo apt -y upgrade'
 alias auf='sudo apt -y full-upgrade && sudo apt -y autoremove'
 alias bi="bash-it"

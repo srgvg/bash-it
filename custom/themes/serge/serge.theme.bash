@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 basetheme=powerline-multiline
-#POWERLINE_PROMPT_CHAR="\r"
+# define prompt before sourcing upstream theme
+# ⇒  ⇨  ➡  ➞
+POWERLINE_PROMPT_CHAR=${POWERLINE_PROMPT_CHAR:="➡ "}
 source "$BASH_IT/themes/$basetheme/$basetheme.theme.bash"
 
 POWERLINE_LEFT_PROMPT="user_info hostname scm cwd"

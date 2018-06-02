@@ -9,9 +9,6 @@ shopt -s histappend
 HISTSIZE=5000
 HISTFILESIZE=20000
 
-# go path
-export GOPATH=~/src/go/
-
 # editor
 export VISUAL=vim
 export EDITOR=vim

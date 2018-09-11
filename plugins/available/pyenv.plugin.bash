@@ -10,6 +10,7 @@ pathmunge "$PYENV_ROOT/bin"
 if pyenv virtualenv-init - &> /dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
-
+# pyenv might leave a dangling ; which can break other additions
+PROMPT_COMMAND=$(echo ${PROMPT_COMMAND} | sed 's/;$//')
 # Load the auto-completion script if pyenv was loaded.
 [[ -e $PYENV_ROOT/completions/pyenv.bash ]] && source $PYENV_ROOT/completions/pyenv.bash

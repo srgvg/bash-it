@@ -7,3 +7,7 @@ shopt -s checkwinsize
 
 # ls(1)
 eval $(dircolors)
+
+
+## GOPATH
+GOPATH=$HOME/go

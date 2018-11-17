@@ -2,42 +2,27 @@
 ## PATH #
 #
 
-# sbin (Debian)
-PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin"
+# add sbin paths (not default in Debian)
+pathmunge /usr/local/sbin:/usr/sbin:/sbin
 
-## set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]
-then
-  PATH="$HOME/bin:$PATH"
-fi
-# set PATH so it includes user's private bins (bin secure) if it exists
-if [ -d "$HOME/bins" ]
-then
-  PATH="$HOME/bins:$PATH"
-fi
-# set PATH so it includes user's extra bin2 if it exists
-if [ -d "$HOME/bin2" ]
-then
-  if [ -d "$HOME/bin2/javabin" ]
+
+## set PATH so it includes various user's private bin dirs
+GOBINPATH="${GOPATH//://bin:}/bin"
+gobinpath="${GOBINPATH/$HOME\/}"
+
+_binpaths="${gobinpath} bin bins bin2"
+_bin2paths="$(cd $HOME; find bin2/ -mindepth 1 -maxdepth 1  -type d 2>/dev/null | sort -r | xargs)"
+[ -n "${_bin2paths}" ] && _binpaths="${_binpaths} ${_bin2paths}"
+_binpaths="$_binpaths .local/bin"
+unset _bin2paths
+
+for _p in ${_binpaths}
+do
+  if [ -d "$HOME/$_p" ]
   then
-    PATH="$HOME/bin2/javabin:$PATH"
+    pathmunge "$HOME/$_p"
   fi
-  PATH="$HOME/bin2:$PATH"
-fi
+done
 
-## golang bin path
-if [ -d /usr/local/go/bin ]
-then
-  PATH="/usr/local/go/bin:$PATH"
-fi
-if [ -d "$HOME/go/bin" ]
-then
-  PATH="$HOME/go/bin:$PATH"
-fi
-
-## local pip and other thingz
-if [ -d $HOME/.local/bin ]
-then
-  PATH="$HOME/.local/bin:$PATH"
-fi
-
+unset _binpaths
+unset _p

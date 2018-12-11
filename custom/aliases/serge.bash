@@ -14,6 +14,7 @@ alias diff='diff --unified --color'
 alias dL='dpkg -L'
 alias dnstc='dnssec-trigger-control'
 alias ecryptmount="sudo mount -t ecryptfs -o ecryptfs_enable_filename_crypto=yes"
+alias ev="expressvpn"
 alias ga='git add'
 alias gA='git add --all'
 alias gap='git add --patch'

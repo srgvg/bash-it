@@ -40,6 +40,10 @@ function dl() {
 	dpkg -l | grep $(for n in ${*:-^}; do echo -n " -e $n"; done)
 }
 
+function ka() {
+	kubectl $* --all-namespaces
+}
+
 function manswitch() {
   # This will take you to the relevant part of the man page,
   # so you can see the description of the switch underneath.

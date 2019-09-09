@@ -12,6 +12,7 @@ alias bi="bash-it"
 alias copy='xclip -in -selection c'
 alias diff='diff --unified --color'
 alias dL='dpkg -L'
+alias dmesg="dmesg --ctime --time-format iso --decode --human --nopager"
 alias dnstc='dnssec-trigger-control'
 alias ecryptmount="sudo mount -t ecryptfs -o ecryptfs_enable_filename_crypto=yes"
 alias ev="expressvpn"
@@ -35,6 +36,7 @@ alias imginfo="identify -format '-- %f -- \nType: %m\nSize: %b bytes\nResolution
 alias imgres="identify -format '%f: %wpx x %hpx\n'"
 alias jqc="jq -C . | less -r"
 alias k="kubectl"
+alias less="bat"
 alias li3='launch-screen i3jobs'
 alias l='ls -lh'
 alias locateh="locate --all --existing --follow --ignore-case /home/serge/"

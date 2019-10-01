@@ -36,7 +36,6 @@ alias imginfo="identify -format '-- %f -- \nType: %m\nSize: %b bytes\nResolution
 alias imgres="identify -format '%f: %wpx x %hpx\n'"
 alias jqc="jq -C . | less -r"
 alias k="kubectl"
-alias less="bat"
 alias li3='launch-screen i3jobs'
 alias l='ls -lh'
 alias locateh="locate --all --existing --follow --ignore-case /home/serge/"

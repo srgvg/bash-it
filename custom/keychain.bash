@@ -1,6 +1,6 @@
 
 ## SSH Agent
-if [   "${HOSTNAME}" = "goldorak" ] || [ "${HOSTNAME}" = "minos" ] || [ "${HOSTNAME}" = "cyberlab" ]
+if [   "${HOSTNAME}" = "goldorak" ] || [ "${HOSTNAME}" = "minos" ] || [ "${HOSTNAME}" = "cyberlab" ] || [ "${HOSTNAME}" = "fregolo" ]
 then
     # re-use keychain agents if available
     if [ -f ~/.keychain/${HOSTNAME}-sh ]

@@ -12,7 +12,7 @@ alias bi="bash-it"
 alias copy='xclip -in -selection c'
 alias diff='diff --unified --color'
 alias dL='dpkg -L'
-alias dmesg="dmesg --ctime --time-format iso --decode --human --nopager"
+alias dmesg="dmesg --ctime --time-format iso --decode --nopager"
 alias dnstc='dnssec-trigger-control'
 alias ecryptmount="sudo mount -t ecryptfs -o ecryptfs_enable_filename_crypto=yes"
 alias ev="expressvpn"

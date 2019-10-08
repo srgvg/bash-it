@@ -4,11 +4,27 @@
 # :indentSize=4:tabSize=4:noTabs=false:
 
 function apk() {
-	# show extended package information
-	# shellcheck disable=SC2048
-	apt-cache policy $*
-	# shellcheck disable=SC2048
-	apt-cache showpkg $*
+	notfirst=""
+	for package in $*
+	do
+		# show extended package information
+		echo
+		# shellcheck disable=SC2048
+		apt-cache show $package
+		echo --------------------
+		# shellcheck disable=SC2048
+		apt-cache policy $package
+		echo --------------------
+		# shellcheck disable=SC2048
+		apt-cache showpkg $package
+		if [ -n "$notfirst" ]; then
+			echo
+			echo ========================================
+			echo
+		else
+			notfirst=yes
+		fi
+	done | less --quit-if-one-screen --no-init
 }
 
 function aswitch() {

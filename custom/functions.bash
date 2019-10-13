@@ -3,27 +3,32 @@
 # vi: set shiftwidth=4 tabstop=4 noexpandtab:
 # :indentSize=4:tabSize=4:noTabs=false:
 
+function _printline() {
+	local _char=$1
+	printf "%`tput cols`s" | tr " " "$_char"
+}
+
 function apk() {
-	notfirst=""
+	local notfirst=""
 	for package in $*
 	do
-		# show extended package information
-		echo
-		# shellcheck disable=SC2048
-		apt-cache show $package
-		echo --------------------
-		# shellcheck disable=SC2048
-		apt-cache policy $package
-		echo --------------------
-		# shellcheck disable=SC2048
-		apt-cache showpkg $package
 		if [ -n "$notfirst" ]; then
 			echo
-			echo ========================================
+			_printline "="
 			echo
 		else
 			notfirst=yes
 		fi
+		# show extended package information
+		echo
+		# shellcheck disable=SC2048
+		apt-cache show $package
+		_printline "-"
+		# shellcheck disable=SC2048
+		apt-cache policy $package
+		_printline "-"
+		# shellcheck disable=SC2048
+		apt-cache showpkg $package
 	done | less --quit-if-one-screen --no-init
 }
 

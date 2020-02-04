@@ -44,7 +44,6 @@ alias o='gnome-open'
 alias paste='xclip -out -selection c'
 alias ping1="ping -c 1 "
 alias ping3="ping -c 3 "
-alias poweroff="sudo poweroff"
 alias poweroff='sudo /sbin/poweroff'
 alias psless="ps auxwwf | less"
 alias r='ranger'

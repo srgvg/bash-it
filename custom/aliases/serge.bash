@@ -36,10 +36,12 @@ alias imginfo="identify -format '-- %f -- \nType: %m\nSize: %b bytes\nResolution
 alias imgres="identify -format '%f: %wpx x %hpx\n'"
 alias jqc="jq -C . | less -r"
 alias k="kubectl"
+alias kact='export KUBECONFIG=$(ls $HOME/.kube/config.d/ | sed "s@^@:$HOME/.kube/config.d/@g" | xargs | sed "s/^://;s/\ //g")'
+alias ctx='kubectx'
+alias kns='kubens'
 alias li3='launch-screen i3jobs'
 alias l='ls -lh'
 alias locateh="locate --all --existing --follow --ignore-case /home/serge/"
-alias locatehc="locate --all --existing --follow --ignore-case /home/serge/cloud/"
 alias o='gnome-open'
 alias paste='xclip -out -selection c'
 alias ping1="ping -c 1 "
@@ -57,6 +59,6 @@ alias sysl="tail -n 200 -f /var/log/syslog"
 alias terminal="/usr/bin/xfce4-terminal --disable-server"
 alias vs="vcsh status"
 alias v="vcsh"
-alias where="locatehc"
+alias wheredoc="locate --all --existing --follow --ignore-case /home/serge/Documents"
 
 unalias grv
